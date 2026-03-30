@@ -1,0 +1,51 @@
+package com.example.roomiz;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder>{
+
+    List<ChatItem> chatItems;
+
+    public ChatItemAdapter(){
+        super();
+        chatItems = new ArrayList<>();
+        chatItems.add(new ChatItem(R.drawable.mika_dan, "Mika Dan", "Hey! How are you?"));
+        chatItems.add(new ChatItem(R.drawable.daniel_levy, "Daniel Levy", "How is it going?"));
+        chatItems.add(new ChatItem(R.drawable.dana_levy, "Dana Levy \uD83C\uDFE0", "I’m pretty flexible"));
+        chatItems.add(new ChatItem(R.drawable.alon_ron, "Alon Ron", "Hey! How are you?"));
+        chatItems.add(new ChatItem(R.drawable.gaya_refael, "Gaya Refael \uD83C\uDFE0", "Where do you live now?"));
+        chatItems.add(new ChatItem(R.drawable.ori_keidar, "Ori Keidar", "Yes sure :)"));
+        chatItems.add(new ChatItem(R.drawable.tom_sasson, "Tom Sasson", "You can call at 10:00"));
+        chatItems.add(new ChatItem(R.drawable.yuval_matalon, "Yuval Matalon", "Hey! How are you?"));
+    }
+
+
+    @NonNull
+    @Override
+    public ChatItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_item, parent, false);
+        ChatItemViewHolder viewHolder = new ChatItemViewHolder(view);
+        return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ChatItemViewHolder holder, int position) {
+        ChatItem chatItem = chatItems.get(position);
+        holder.ivChatProfile.setImageResource(chatItem.getChatProfileImage());
+        holder.tvFullName.setText(chatItem.getFullName());
+        holder.tvLastMessage.setText(chatItem.getLastMessage());
+    }
+
+    @Override
+    public int getItemCount() {
+        return chatItems.size();
+    }
+}

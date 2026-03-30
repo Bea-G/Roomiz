@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/miHome"
+        android:icon="@drawable/house_regular_full"
+        android:title="Home" />
+    <item
+        android:id="@+id/miChat"
+        android:icon="@drawable/comments_regular_full"
+        android:title="Chats" />
+</menu>
