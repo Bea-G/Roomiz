@@ -13,18 +13,22 @@ import java.util.List;
 public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder>{
 
     List<ChatItem> chatItems;
+    List<ChatItem> allChatItems;  // To be able to search for the chats
 
     public ChatItemAdapter(){
         super();
         chatItems = new ArrayList<>();
-        chatItems.add(new ChatItem(R.drawable.mika_dan, "Mika Dan", "Hey! How are you?"));
-        chatItems.add(new ChatItem(R.drawable.daniel_levy, "Daniel Levy", "How is it going?"));
-        chatItems.add(new ChatItem(R.drawable.dana_levy, "Dana Levy \uD83C\uDFE0", "I’m pretty flexible"));
-        chatItems.add(new ChatItem(R.drawable.alon_ron, "Alon Ron", "Hey! How are you?"));
-        chatItems.add(new ChatItem(R.drawable.gaya_refael, "Gaya Refael \uD83C\uDFE0", "Where do you live now?"));
-        chatItems.add(new ChatItem(R.drawable.ori_keidar, "Ori Keidar", "Yes sure :)"));
-        chatItems.add(new ChatItem(R.drawable.tom_sasson, "Tom Sasson", "You can call at 10:00"));
-        chatItems.add(new ChatItem(R.drawable.yuval_matalon, "Yuval Matalon", "Hey! How are you?"));
+        allChatItems = new ArrayList<>();
+        allChatItems.add(new ChatItem(R.drawable.mika_dan, "Mika Dan", "Hey! How are you?"));
+        allChatItems.add(new ChatItem(R.drawable.daniel_levy, "Daniel Levy", "How is it going?"));
+        allChatItems.add(new ChatItem(R.drawable.dana_levy, "Dana Levy \uD83C\uDFE0", "I’m pretty flexible"));
+        allChatItems.add(new ChatItem(R.drawable.alon_ron, "Alon Ron", "Hey! How are you?"));
+        allChatItems.add(new ChatItem(R.drawable.gaya_refael, "Gaya Refael \uD83C\uDFE0", "Where do you live now?"));
+        allChatItems.add(new ChatItem(R.drawable.ori_keidar, "Ori Keidar", "Yes sure :)"));
+        allChatItems.add(new ChatItem(R.drawable.tom_sasson, "Tom Sasson", "You can call at 10:00"));
+        allChatItems.add(new ChatItem(R.drawable.yuval_matalon, "Yuval Matalon", "Hey! How are you?"));
+
+        chatItems.addAll(allChatItems);  // Show all chats by default
     }
 
 
@@ -47,5 +51,22 @@ public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder>{
     @Override
     public int getItemCount() {
         return chatItems.size();
+    }
+
+    public void filter(String query) {
+        chatItems.clear();
+
+        if (query == null || query.trim().isEmpty()) {
+            chatItems.addAll(allChatItems);
+        } else {
+            String lowerQuery = query.toLowerCase();
+
+            for (ChatItem item : allChatItems) {
+                if (item.getFullName().toLowerCase().contains(lowerQuery)) {
+                    chatItems.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }
