@@ -19,6 +19,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView rvProfileCards;
     private ProfileAdapter pa;
     private List<Profile> profiles;
+    View endCard;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -33,6 +34,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        endCard = view.findViewById(R.id.endCard);
 
         rvProfileCards = view.findViewById(R.id.rvProfileCards);
         profiles = ProfileRepository.getProfiles();
@@ -62,7 +65,11 @@ public class HomeFragment extends Fragment {
                 .rotation(12f)
                 .alpha(0f)
                 .setDuration(300)
-                .withEndAction(() -> pa.removeCard(position))
+                .withEndAction(() -> {
+                    pa.removeCard(position);
+
+                    checkIfFinished();
+                })
                 .start();
     }
 
@@ -74,8 +81,19 @@ public class HomeFragment extends Fragment {
                 .rotation(-12f)
                 .alpha(0f)
                 .setDuration(300)
-                .withEndAction(() -> pa.removeCard(position))
+                .withEndAction(() -> {
+                    pa.removeCard(position);
+
+                    checkIfFinished();
+                })
                 .start();
+    }
+
+    private void checkIfFinished() {
+        if (pa.getItemCount() == 0) {
+            rvProfileCards.setVisibility(View.GONE);
+            endCard.setVisibility(View.VISIBLE);
+        }
     }
 
     private void showMatchToast(String message) {
