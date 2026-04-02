@@ -11,14 +11,15 @@ import java.util.List;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder> {
 
-    public interface OnLikeClickListener {
-        void onLikeClick(int position, View itemView);
+    public interface OnLikeActionListener {
+        void onLike(int position, View itemView);
+        void onUnlike(int position, View itemView);
     }
 
     private final List<Profile> profiles;
-    private final OnLikeClickListener listener;
+    private final OnLikeActionListener listener;
 
-    public ProfileAdapter(List<Profile> profiles, OnLikeClickListener listener) {
+    public ProfileAdapter(List<Profile> profiles, OnLikeActionListener listener) {
         this.profiles = profiles;
         this.listener = listener;
     }
@@ -44,9 +45,16 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder> {
         holder.tvTagTwo.setText(profile.getTagTwo());
 
         holder.btnLike.setOnClickListener(v -> {
-            int adapterPosition = holder.getBindingAdapterPosition();
-            if (adapterPosition != RecyclerView.NO_POSITION) {
-                listener.onLikeClick(adapterPosition, holder.itemView);
+            int pos = holder.getBindingAdapterPosition();
+            if (pos != RecyclerView.NO_POSITION) {
+                listener.onLike(pos, holder.itemView);
+            }
+        });
+
+        holder.btnUnlike.setOnClickListener(v -> {
+            int pos = holder.getBindingAdapterPosition();
+            if (pos != RecyclerView.NO_POSITION) {
+                listener.onUnlike(pos, holder.itemView);
             }
         });
     }

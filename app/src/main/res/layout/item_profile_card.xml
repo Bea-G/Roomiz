@@ -148,11 +148,11 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
-            android:id="@+id/btnSave"
+            android:id="@+id/btnUnlike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:src="@drawable/btn_save" />
+            android:src="@drawable/btn_unlike" />
 
         <ImageButton
             android:id="@+id/btnChat"

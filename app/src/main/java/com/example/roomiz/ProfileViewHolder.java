@@ -18,6 +18,7 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
     public TextView tvTagOne;
     public TextView tvTagTwo;
     public ImageButton btnLike;
+    public ImageButton btnUnlike;
 
     public ProfileViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -30,5 +31,6 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
         tvTagOne = itemView.findViewById(R.id.tvTagOne);
         tvTagTwo = itemView.findViewById(R.id.tvTagTwo);
         btnLike = itemView.findViewById(R.id.btnLike);
+        btnUnlike = itemView.findViewById(R.id.btnUnlike);
     }
 }
