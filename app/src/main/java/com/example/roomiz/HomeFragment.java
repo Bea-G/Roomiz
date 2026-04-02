@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
         rvProfileCards = view.findViewById(R.id.rvProfileCards);
         profiles = ProfileRepository.getProfiles();
 
-        pa = new ProfileAdapter(profiles, new ProfileAdapter.OnLikeActionListener() {
+        pa = new ProfileAdapter(profiles, new ProfileAdapter.OnActionListener() {
             @Override
             public void onLike(int position, View itemView) {
                 animateRightAndRemove(position, itemView);
@@ -50,10 +50,30 @@ public class HomeFragment extends Fragment {
             public void onUnlike(int position, View itemView) {
                 animateLeftAndRemove(position, itemView);
             }
+
+            @Override
+            public void onChat(Profile profile) {
+                openChatsFragment(profile.getName());
+            }
         });
 
         rvProfileCards.setLayoutManager(new StackLayoutManager());
         rvProfileCards.setAdapter(pa);
+    }
+
+    private void openChatsFragment(String name) {
+        ChatsFragment fragment = new ChatsFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("search_name", name);
+        fragment.setArguments(bundle);
+
+        requireActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flHome, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     private void animateRightAndRemove(int position, View itemView) {

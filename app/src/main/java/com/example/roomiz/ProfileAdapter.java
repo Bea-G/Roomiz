@@ -11,15 +11,16 @@ import java.util.List;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder> {
 
-    public interface OnLikeActionListener {
+    public interface OnActionListener {
         void onLike(int position, View itemView);
         void onUnlike(int position, View itemView);
+        void onChat(Profile profile);
     }
 
     private final List<Profile> profiles;
-    private final OnLikeActionListener listener;
+    private final OnActionListener listener;
 
-    public ProfileAdapter(List<Profile> profiles, OnLikeActionListener listener) {
+    public ProfileAdapter(List<Profile> profiles, OnActionListener listener) {
         this.profiles = profiles;
         this.listener = listener;
     }
@@ -56,6 +57,10 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder> {
             if (pos != RecyclerView.NO_POSITION) {
                 listener.onUnlike(pos, holder.itemView);
             }
+        });
+
+        holder.btnChat.setOnClickListener(v -> {
+            listener.onChat(profile);
         });
     }
 

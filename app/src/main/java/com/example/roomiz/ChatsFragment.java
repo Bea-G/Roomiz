@@ -28,6 +28,12 @@ public class ChatsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        String searchName = null;
+
+        if (getArguments() != null) {
+            searchName = getArguments().getString("search_name");
+        }
+
         RecyclerView rvChatItems = view.findViewById(R.id.rvChatItems);
         rvChatItems.setHasFixedSize(false);
 
@@ -49,6 +55,11 @@ public class ChatsFragment extends Fragment {
             @Override
             public void afterTextChanged(android.text.Editable s) {}
         });
+
+        if (searchName != null) {
+            etSearch.setText(searchName);
+            etSearch.setSelection(searchName.length()); // cursor at end
+        }
     }
 
     @Override
