@@ -12,11 +12,13 @@ import java.util.List;
 
 public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder>{
 
-    List<ChatItem> chatItems;
-    List<ChatItem> allChatItems;  // To be able to search for the chats
+    List<ChatItem> chatItems;  // List of chat items
+    List<ChatItem> allChatItems;  // List of all chat items (to be able to search for the chats)
 
     public ChatItemAdapter(){
         super();
+
+        // Initialize the lists
         chatItems = new ArrayList<>();
         allChatItems = new ArrayList<>();
         allChatItems.add(new ChatItem(R.drawable.mika_dan, "Mika Dan", "Hey! How are you?"));
@@ -53,20 +55,24 @@ public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder>{
         return chatItems.size();
     }
 
+    // Filter the chat items based on the search query
     public void filter(String query) {
-        chatItems.clear();
+        chatItems.clear();  // Clear the list
 
         if (query == null || query.trim().isEmpty()) {
+            // If the query is empty, show all chats
             chatItems.addAll(allChatItems);
         } else {
+            // If the query is not empty, filter the chats
             String lowerQuery = query.toLowerCase();
 
+            // Loop through all chat items and add the ones that match the query
             for (ChatItem item : allChatItems) {
                 if (item.getFullName().toLowerCase().contains(lowerQuery)) {
                     chatItems.add(item);
                 }
             }
         }
-        notifyDataSetChanged();
+        notifyDataSetChanged();  // Update the RecyclerView
     }
 }

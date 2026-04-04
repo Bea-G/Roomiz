@@ -12,13 +12,14 @@ import java.util.List;
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder> {
 
     public interface OnActionListener {
-        void onLike(int position, View itemView);
-        void onUnlike(int position, View itemView);
-        void onChat(Profile profile);
+        // Interface for the action listeners
+        void onLike(int position, View itemView);  // When the like button is pressed
+        void onUnlike(int position, View itemView);  // When the unlike button is pressed
+        void onChat(Profile profile);  // When the chat button is pressed
     }
 
-    private final List<Profile> profiles;
-    private final OnActionListener listener;
+    private final List<Profile> profiles;  // List of profiles
+    private final OnActionListener listener;  // Listener for the action listeners
 
     public ProfileAdapter(List<Profile> profiles, OnActionListener listener) {
         this.profiles = profiles;
@@ -35,6 +36,8 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ProfileViewHolder holder, int position) {
+        // Bind the profile data to the view holder
+
         Profile profile = profiles.get(position);
 
         holder.ivProfileImage.setImageResource(profile.getImageResId());
@@ -45,22 +48,23 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder> {
         holder.tvTagOne.setText(profile.getTagOne());
         holder.tvTagTwo.setText(profile.getTagTwo());
 
+        // Set the click listeners for the buttons
         holder.btnLike.setOnClickListener(v -> {
-            int pos = holder.getBindingAdapterPosition();
-            if (pos != RecyclerView.NO_POSITION) {
-                listener.onLike(pos, holder.itemView);
+            int pos = holder.getBindingAdapterPosition();  // Get the position of the item
+            if (pos != RecyclerView.NO_POSITION) { // Check if the position is valid
+                listener.onLike(pos, holder.itemView);  // Call the onLike method of the listener
             }
         });
 
         holder.btnUnlike.setOnClickListener(v -> {
-            int pos = holder.getBindingAdapterPosition();
-            if (pos != RecyclerView.NO_POSITION) {
-                listener.onUnlike(pos, holder.itemView);
+            int pos = holder.getBindingAdapterPosition();  // Get the position of the item
+            if (pos != RecyclerView.NO_POSITION) {  // Check if the position is valid
+                listener.onUnlike(pos, holder.itemView);  // Call the onUnlike method of the listener
             }
         });
 
         holder.btnChat.setOnClickListener(v -> {
-            listener.onChat(profile);
+            listener.onChat(profile);  // Call the onChat method of the listener
         });
     }
 
@@ -70,9 +74,10 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder> {
     }
 
     public void removeCard(int position) {
+        // Remove the card at the given position
         if (position >= 0 && position < profiles.size()) {
-            profiles.remove(position);
-            notifyItemRemoved(position);
+            profiles.remove(position);  // Remove the profile from the list
+            notifyItemRemoved(position);  // Notify the adapter that the item has been removed
         }
     }
 }

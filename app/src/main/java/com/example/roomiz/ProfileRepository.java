@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileRepository {
+    // Repository class to provide a list of profiles (class Profile)
+    // NOTE: will be replaced with an actual database in the future
 
-    public static List<Profile> getProfiles() {
-        List<Profile> profiles = new ArrayList<>();
+    public static List<Profile> getProfiles() {  // Get a list of profiles
+        List<Profile> profiles = new ArrayList<>();  // Initialize the list
 
+        // Create Profile objects and add them to the profiles list
         profiles.add(new Profile(
                 R.drawable.mika_dan,
                 "Mika Dan",

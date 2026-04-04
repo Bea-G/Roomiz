@@ -16,10 +16,10 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private RecyclerView rvProfileCards;
-    private ProfileAdapter pa;
-    private List<Profile> profiles;
-    View endCard;
+    private RecyclerView rvProfileCards;  // RecyclerView for the profile cards
+    private ProfileAdapter pa;  // Adapter for the profile cards
+    private List<Profile> profiles;  // List of profiles
+    View endCard;  // View for the end card
 
     public HomeFragment() {
         // Required empty public constructor
@@ -35,6 +35,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Initializing
         endCard = view.findViewById(R.id.endCard);
 
         rvProfileCards = view.findViewById(R.id.rvProfileCards);
@@ -42,32 +43,35 @@ public class HomeFragment extends Fragment {
 
         pa = new ProfileAdapter(profiles, new ProfileAdapter.OnActionListener() {
             @Override
-            public void onLike(int position, View itemView) {
+            public void onLike(int position, View itemView) {  // When the like button is pressed
                 animateRightAndRemove(position, itemView);
             }
 
             @Override
-            public void onUnlike(int position, View itemView) {
+            public void onUnlike(int position, View itemView) {  // When the unlike button is pressed
                 animateLeftAndRemove(position, itemView);
             }
 
             @Override
-            public void onChat(Profile profile) {
+            public void onChat(Profile profile) {  // When the chat button is pressed
+                // Open the chats fragment
                 openChatsFragment(profile.getName());
             }
         });
 
-        rvProfileCards.setLayoutManager(new StackLayoutManager());
+        rvProfileCards.setLayoutManager(new StackLayoutManager());  // Set the "Deck" layout manager
         rvProfileCards.setAdapter(pa);
     }
 
     private void openChatsFragment(String name) {
         ChatsFragment fragment = new ChatsFragment();
 
-        Bundle bundle = new Bundle();
-        bundle.putString("search_name", name);
-        fragment.setArguments(bundle);
+        // Pass the name of the profile to the chat fragment
+        Bundle bundle = new Bundle();  // Create a new bundle
+        bundle.putString("search_name", name);  // The name of the profile
+        fragment.setArguments(bundle);  // Pass the bundle to the fragment
 
+        // Replace the current fragment with the chat fragment
         requireActivity()
                 .getSupportFragmentManager()
                 .beginTransaction()
@@ -77,7 +81,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void animateRightAndRemove(int position, View itemView) {
-        String name = profiles.get(position).getName();
+        String name = profiles.get(position).getName();  // Get the name of the profile
         showMatchToast("It's a match with " + name + "!🎉");
 
         itemView.animate()
@@ -88,6 +92,7 @@ public class HomeFragment extends Fragment {
                 .withEndAction(() -> {
                     pa.removeCard(position);
 
+                    // Check if there are no more cards left and if so, show the end card
                     checkIfFinished();
                 })
                 .start();
@@ -104,11 +109,13 @@ public class HomeFragment extends Fragment {
                 .withEndAction(() -> {
                     pa.removeCard(position);
 
+                    // Check if there are no more cards left and if so, show the end card
                     checkIfFinished();
                 })
                 .start();
     }
 
+    // Check if RecyclerView of profile cards is empty and if so, show the end card
     private void checkIfFinished() {
         if (pa.getItemCount() == 0) {
             rvProfileCards.setVisibility(View.GONE);
@@ -116,6 +123,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    // Show a custom "match" Toast
     private void showMatchToast(String message) {
         LayoutInflater inflater = LayoutInflater.from(requireContext());
         View layout = inflater.inflate(R.layout.match_toast, null);
@@ -125,7 +133,7 @@ public class HomeFragment extends Fragment {
 
         Toast toast = new Toast(requireContext());
         toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(layout);
+        toast.setView(layout);  // Set custom layout
         toast.show();
     }
 }

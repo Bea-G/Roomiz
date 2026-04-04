@@ -10,16 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ProfileViewHolder extends RecyclerView.ViewHolder {
 
-    public ImageView ivProfileImage;
-    public TextView tvMatchPercentage;
-    public TextView tvProfileName;
-    public TextView tvAgeCity;
-    public TextView tvAbout;
-    public TextView tvTagOne;
-    public TextView tvTagTwo;
-    public ImageButton btnLike;
-    public ImageButton btnUnlike;
-    public ImageButton btnChat;
+    public ImageView ivProfileImage;  // Profile image
+    public TextView tvMatchPercentage;  // Match percentage
+    public TextView tvProfileName;  // Profile name
+    public TextView tvAgeCity;  // Age and city
+    public TextView tvAbout;  // About
+    public TextView tvTagOne;  // Tag one
+    public TextView tvTagTwo;  // Tag two
+    public ImageButton btnLike;  // Like button
+    public ImageButton btnUnlike;  // Unlike button
+    public ImageButton btnChat;  // Chat button
 
     public ProfileViewHolder(@NonNull View itemView) {
         super(itemView);

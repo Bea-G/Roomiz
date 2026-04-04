@@ -28,10 +28,10 @@ public class ChatsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String searchName = null;
+        String searchName = null;  // Name of the profile to search for
 
-        if (getArguments() != null) {
-            searchName = getArguments().getString("search_name");
+        if (getArguments() != null) {  // Check if arguments are passed to the ChatsFragment
+            searchName = getArguments().getString("search_name");  // Get the name of the profile
         }
 
         RecyclerView rvChatItems = view.findViewById(R.id.rvChatItems);
@@ -43,12 +43,15 @@ public class ChatsFragment extends Fragment {
 
         EditText etSearch = view.findViewById(R.id.etSearch);
 
+        // Search functionality
         etSearch.addTextChangedListener(new android.text.TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+            // When the text in the EditText changes
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Filter the chat items based on the search query
                 cia.filter(s.toString());
             }
 
@@ -56,6 +59,7 @@ public class ChatsFragment extends Fragment {
             public void afterTextChanged(android.text.Editable s) {}
         });
 
+        // If a name was passed to the ChatsFragment, set it to the EditText
         if (searchName != null) {
             etSearch.setText(searchName);
             etSearch.setSelection(searchName.length()); // cursor at end
