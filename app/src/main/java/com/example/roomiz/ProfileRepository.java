@@ -1,49 +1,70 @@
 package com.example.roomiz;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileRepository {
-    // Repository class to provide a list of profiles (class Profile)
-    // NOTE: will be replaced with an actual database in the future
 
-    public static List<Profile> getProfiles() {  // Get a list of profiles
-        List<Profile> profiles = new ArrayList<>();  // Initialize the list
+    public interface ProfilesCallback {
+        void onProfilesLoaded(List<Profile> profiles);
+        void onError(Exception e);
+    }
 
-        // Create Profile objects and add them to the profiles list
-        profiles.add(new Profile(
-                R.drawable.mika_dan,
-                "Mika Dan",
-                24,
-                "Haifa",
-                89,
-                "I love photography, long walks by the beach, and trying new coffee places.",
-                "\uD83D\uDCF8 Photography",
-                "\u2615 Coffee"
-        ));
+    public static void getProfilesFromFirestore(ProfilesCallback callback) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        profiles.add(new Profile(
-                R.drawable.gaya_refael,
-                "Gaya Refael",
-                26,
-                "Jerusalem",
-                91,
-                "I enjoy art museums, weekend trips, and cooking for friends and family.",
-                "\uD83C\uDFA8 Art",
-                "\uD83D\uDE97 Travel"
-        ));
+        db.collection("profiles")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    List<Profile> profiles = new ArrayList<>();
 
-        profiles.add(new Profile(
-                R.drawable.dana_levy,
-                "Dana Levy",
-                25,
-                "Tel Aviv",
-                93,
-                "I’m a student of communications, and in my free time, I enjoy cooking, traveling, and hanging out with friends.",
-                "\uD83C\uDFB5 Pop, Hip-hop",
-                "\uD83C\uDFE0 Apartment"
-        ));
+                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                        String name = document.getString("name");
+                        String city = document.getString("city");
+                        String about = document.getString("about");
+                        String imageName = document.getString("imageName");
 
-        return profiles;
+                        Long ageLong = document.getLong("age");
+                        Long matchLong = document.getLong("matchPercentage");
+
+                        int age = ageLong != null ? ageLong.intValue() : 0;
+                        int matchPercentage = matchLong != null ? matchLong.intValue() : 0;
+
+                        List<String> interests = (List<String>) document.get("interests");
+                        String tagOne = interests != null && interests.size() > 0 ? interests.get(0) : "";
+                        String tagTwo = interests != null && interests.size() > 1 ? interests.get(1) : "";
+
+                        int imageResId = getImageResourceId(imageName);
+
+                        profiles.add(new Profile(
+                                imageResId,
+                                name,
+                                age,
+                                city,
+                                matchPercentage,
+                                about,
+                                tagOne,
+                                tagTwo
+                        ));
+                    }
+
+                    callback.onProfilesLoaded(profiles);
+                })
+                .addOnFailureListener(callback::onError);
+    }
+
+    private static int getImageResourceId(String imageName) {
+        if ("dana_levy".equals(imageName)) {
+            return R.drawable.dana_levy;
+        } else if ("mika_dan".equals(imageName)) {
+            return R.drawable.mika_dan;
+        } else if ("gaya_refael".equals(imageName)) {
+            return R.drawable.gaya_refael;
+        } else {
+            return R.drawable.dana_levy;
+        }
     }
 }

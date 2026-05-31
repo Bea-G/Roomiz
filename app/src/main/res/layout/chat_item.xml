@@ -6,7 +6,7 @@
     android:layout_height="100dp"
     android:background="@drawable/chat_item_background">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivChatProfile"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -16,8 +16,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/circle_profile_imageview"
-        android:clipToOutline="true"
         android:scaleType="centerCrop"
         android:src="@drawable/dana_levy"
          />
