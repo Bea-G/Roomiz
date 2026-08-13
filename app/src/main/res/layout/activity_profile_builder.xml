@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -8,7 +7,6 @@
     android:paddingTop="18dp"
     android:paddingEnd="22dp"
     android:paddingBottom="18dp">
-
     <LinearLayout
         android:id="@+id/progressIndicator"
         android:layout_width="0dp"
@@ -18,13 +16,48 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <View android:id="@+id/progress1" android:layout_width="0dp" android:layout_height="3dp" android:layout_marginEnd="7dp" android:layout_weight="1" android:background="@color/black" />
-        <View android:id="@+id/progress2" android:layout_width="0dp" android:layout_height="3dp" android:layout_marginEnd="7dp" android:layout_weight="1" android:background="@color/profile_progress_inactive" />
-        <View android:id="@+id/progress3" android:layout_width="0dp" android:layout_height="3dp" android:layout_marginEnd="7dp" android:layout_weight="1" android:background="@color/profile_progress_inactive" />
-        <View android:id="@+id/progress4" android:layout_width="0dp" android:layout_height="3dp" android:layout_marginEnd="7dp" android:layout_weight="1" android:background="@color/profile_progress_inactive" />
-        <View android:id="@+id/progress5" android:layout_width="0dp" android:layout_height="3dp" android:layout_weight="1" android:background="@color/profile_progress_inactive" />
+        <View
+            android:id="@+id/progress1"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginEnd="7dp"
+            android:layout_weight="1"
+            android:background="@color/black" />
+        <View
+            android:id="@+id/progress2"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginEnd="7dp"
+            android:layout_weight="1"
+            android:background="@color/profile_progress_inactive" />
+        <View
+            android:id="@+id/progress3"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginEnd="7dp"
+            android:layout_weight="1"
+            android:background="@color/profile_progress_inactive" />
+        <View
+            android:id="@+id/progress4"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginEnd="7dp"
+            android:layout_weight="1"
+            android:background="@color/profile_progress_inactive" />
+        <View
+            android:id="@+id/progress5"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginEnd="7dp"
+            android:layout_weight="1"
+            android:background="@color/profile_progress_inactive" />
+        <View
+            android:id="@+id/progress6"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="@color/profile_progress_inactive" />
     </LinearLayout>
-
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="40dp"
@@ -35,7 +68,6 @@
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/progressIndicator" />
-
     <TextView
         android:id="@+id/tvProfileSection"
         android:layout_width="0dp"
@@ -47,7 +79,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnBack" />
-
     <ViewFlipper
         android:id="@+id/profileSteps"
         android:layout_width="0dp"
@@ -58,47 +89,265 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvProfileSection">
-
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent">
-            <TextView android:id="@+id/tvLivingTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/living_space_question" android:textColor="@color/login_text_primary" android:textSize="22sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginTop="22dp" android:layout_marginEnd="16dp" android:orientation="vertical" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvLivingTitle">
-                <com.google.android.material.button.MaterialButton style="@style/Widget.Material3.Button" android:layout_width="match_parent" android:layout_height="42dp" android:backgroundTint="@color/profile_option" android:text="@string/apartment" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" />
-                <com.google.android.material.button.MaterialButton style="@style/Widget.Material3.Button" android:layout_width="match_parent" android:layout_height="42dp" android:layout_marginTop="8dp" android:backgroundTint="@color/profile_option" android:text="@string/house" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" />
-                <com.google.android.material.button.MaterialButton style="@style/Widget.Material3.Button" android:layout_width="match_parent" android:layout_height="42dp" android:layout_marginTop="8dp" android:backgroundTint="@color/profile_option" android:text="@string/studio" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" />
-            </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tvPersonalTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/personal_details_question"
+                android:textColor="@color/login_text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:hint="@string/name_hint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPersonalTitle">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/tvUploadTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:text="@string/upload_photo_question"
+                android:textColor="@color/login_text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nameInputLayout" />
+            <FrameLayout
+                android:id="@+id/photoCaptureArea"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_photo_capture"
+                android:clickable="true"
+                android:contentDescription="@string/take_profile_photo"
+                android:focusable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUploadTitle">
+                <ImageView
+                    android:id="@+id/ivProfilePhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/profile_photo"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone" />
+                <ImageView
+                    android:id="@+id/ivCamera"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/take_profile_photo"
+                    android:src="@drawable/ic_camera" />
+            </FrameLayout>
+            <TextView
+                android:id="@+id/tvPhotoHelp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/photo_help"
+                android:textColor="@color/login_text_secondary"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/photoCaptureArea" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent">
-            <TextView android:id="@+id/tvCityTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/city_question" android:textColor="@color/login_text_primary" android:textSize="22sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-            <Spinner android:id="@+id/spinnerCity" android:layout_width="0dp" android:layout_height="52dp" android:layout_marginTop="20dp" android:background="@drawable/bg_profile_dropdown" android:entries="@array/cities" android:paddingStart="16dp" android:paddingEnd="16dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvCityTitle" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent">
-            <TextView android:id="@+id/tvPriceTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:gravity="center" android:text="@string/price_question" android:textColor="@color/login_text_primary" android:textSize="22sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-            <TextView android:id="@+id/tvRentValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36dp" android:text="@string/rent_value" android:textColor="@color/login_text_primary" android:textSize="16sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvPriceTitle" />
-            <com.google.android.material.slider.Slider android:id="@+id/sliderRent" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="10dp" android:layout_marginTop="6dp" android:layout_marginEnd="10dp" android:value="1000" android:valueFrom="0" android:valueTo="5000" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvRentValue" app:trackColorActive="@color/profile_option_selected" app:trackColorInactive="@color/profile_slider_inactive" app:thumbColor="@color/profile_option_selected" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent">
-            <TextView android:id="@+id/tvStayTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/stay_question" android:textColor="@color/login_text_primary" android:textSize="22sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginTop="22dp" android:layout_marginEnd="16dp" android:orientation="vertical" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvStayTitle">
-                <com.google.android.material.button.MaterialButton style="@style/Widget.Material3.Button" android:layout_width="match_parent" android:layout_height="42dp" android:backgroundTint="@color/profile_option" android:text="@string/stay_one_year" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" />
-                <com.google.android.material.button.MaterialButton style="@style/Widget.Material3.Button" android:layout_width="match_parent" android:layout_height="42dp" android:layout_marginTop="8dp" android:backgroundTint="@color/profile_option" android:text="@string/stay_six_months" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" />
-                <com.google.android.material.button.MaterialButton style="@style/Widget.Material3.Button" android:layout_width="match_parent" android:layout_height="42dp" android:layout_marginTop="8dp" android:backgroundTint="@color/profile_option" android:text="@string/stay_three_months" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" />
-                <com.google.android.material.button.MaterialButton style="@style/Widget.Material3.Button" android:layout_width="match_parent" android:layout_height="42dp" android:layout_marginTop="8dp" android:backgroundTint="@color/profile_option" android:text="@string/stay_short" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" />
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent">
-            <TextView android:id="@+id/tvAmenitiesTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/amenities_question" android:textColor="@color/login_text_primary" android:textSize="22sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-            <com.google.android.material.button.MaterialButton android:id="@+id/btnLaundry" style="@style/Widget.Material3.Button" android:layout_width="wrap_content" android:layout_height="42dp" android:layout_marginTop="22dp" android:backgroundTint="@color/profile_option" android:text="@string/amenity_laundry" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvAmenitiesTitle" />
-            <com.google.android.material.button.MaterialButton android:id="@+id/btnDishwasher" style="@style/Widget.Material3.Button" android:layout_width="wrap_content" android:layout_height="42dp" android:layout_marginStart="8dp" android:backgroundTint="@color/profile_option" android:text="@string/amenity_dishwasher" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" app:layout_constraintBaseline_toBaselineOf="@id/btnLaundry" app:layout_constraintStart_toEndOf="@id/btnLaundry" />
-            <com.google.android.material.button.MaterialButton android:id="@+id/btnBalcony" style="@style/Widget.Material3.Button" android:layout_width="wrap_content" android:layout_height="42dp" android:layout_marginTop="8dp" android:backgroundTint="@color/profile_option" android:text="@string/amenity_balcony" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/btnLaundry" />
-            <com.google.android.material.button.MaterialButton android:id="@+id/btnPetFriendly" style="@style/Widget.Material3.Button" android:layout_width="wrap_content" android:layout_height="42dp" android:layout_marginStart="8dp" android:backgroundTint="@color/profile_option" android:text="@string/amenity_pet_friendly" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" app:layout_constraintBaseline_toBaselineOf="@id/btnBalcony" app:layout_constraintStart_toEndOf="@id/btnBalcony" />
-            <com.google.android.material.button.MaterialButton android:id="@+id/btnPrivateBathroom" style="@style/Widget.Material3.Button" android:layout_width="wrap_content" android:layout_height="42dp" android:layout_marginTop="8dp" android:backgroundTint="@color/profile_option" android:text="@string/amenity_private_bathroom" android:textAllCaps="false" android:textColor="@color/login_text_primary" app:cornerRadius="10dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/btnBalcony" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/living_space_question"
+                android:textColor="@color/login_text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="22dp"
+                android:backgroundTint="@color/profile_option"
+                android:text="@string/apartment"
+                android:textColor="@color/login_text_primary"
+                app:cornerRadius="10dp" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/profile_option"
+                android:text="@string/house"
+                android:textColor="@color/login_text_primary"
+                app:cornerRadius="10dp" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/profile_option"
+                android:text="@string/studio"
+                android:textColor="@color/login_text_primary"
+                app:cornerRadius="10dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/city_question"
+                android:textColor="@color/login_text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_profile_dropdown"
+                android:entries="@array/cities"
+                android:paddingStart="16dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/price_question"
+                android:textColor="@color/login_text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvRentValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="@string/rent_value"
+                android:textColor="@color/login_text_primary"
+                android:textStyle="bold" />
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderRent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:value="1000"
+                android:valueFrom="0"
+                android:valueTo="5000"
+                app:thumbColor="@color/profile_option_selected"
+                app:trackColorActive="@color/profile_option_selected"
+                app:trackColorInactive="@color/profile_slider_inactive" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/stay_question"
+                android:textColor="@color/login_text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="22dp"
+                android:backgroundTint="@color/profile_option"
+                android:text="@string/stay_one_year"
+                android:textColor="@color/login_text_primary"
+                app:cornerRadius="10dp" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/profile_option"
+                android:text="@string/stay_six_months"
+                android:textColor="@color/login_text_primary"
+                app:cornerRadius="10dp" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/profile_option"
+                android:text="@string/stay_three_months"
+                android:textColor="@color/login_text_primary"
+                app:cornerRadius="10dp" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/profile_option"
+                android:text="@string/stay_short"
+                android:textColor="@color/login_text_primary"
+                app:cornerRadius="10dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/amenities_question"
+                android:textColor="@color/login_text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginTop="22dp"
+                android:backgroundTint="@color/profile_option"
+                android:text="@string/amenity_laundry"
+                android:textColor="@color/login_text_primary"
+                app:cornerRadius="10dp" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/profile_option"
+                android:text="@string/amenity_dishwasher"
+                android:textColor="@color/login_text_primary"
+                app:cornerRadius="10dp" />
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/profile_option"
+                android:text="@string/amenity_balcony"
+                android:textColor="@color/login_text_primary"
+                app:cornerRadius="10dp" />
+        </LinearLayout>
     </ViewFlipper>
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnProfileContinue"
         style="@style/Widget.Material3.Button"
@@ -108,9 +357,59 @@
         android:text="@string/continue_label"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="16sp"
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/introScreen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:paddingStart="22dp"
+        android:paddingEnd="22dp"
+        android:paddingBottom="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/tvIntroTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_intro_title"
+            android:textColor="@color/login_text_primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvIntroDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+        <TextView
+            android:id="@+id/tvIntroDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/profile_intro_description"
+            android:textColor="@color/login_text_secondary"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/btnStartProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvIntroTitle" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStartProfile"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/login_text_primary"
+            android:text="@string/start"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

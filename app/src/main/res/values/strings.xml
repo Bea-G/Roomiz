@@ -17,7 +17,8 @@
     <string name="studio">Studio</string>
     <string name="city_question">Which city would you like to live?</string>
     <string name="price_question">What\'s your price range for monthly rent?</string>
-    <string name="rent_value">1000 ?</string>
+    <string name="rent_value">1000 &#8362;</string>
+    <string name="rent_value_format">%1$d &#8362;</string>
     <string name="stay_question">How long are you planing to stay?</string>
     <string name="stay_one_year">1 year +</string>
     <string name="stay_six_months">6 months +</string>
@@ -36,4 +37,12 @@
         <item>Jerusalem</item>
         <item>Haifa</item>
         <item>Beer Sheva</item>
-    </string-array></resources>
+    </string-array>    <string name="profile_intro_title">Let us get to know you better! &#10024;</string>
+    <string name="profile_intro_description">Answer a few quick questions so we can find the best match for you!</string>
+    <string name="start">Start</string>
+    <string name="personal_details_question">What\'s your name?</string>
+    <string name="name_hint">Enter full name</string>
+    <string name="upload_photo_question">Upload a profile pic</string>
+    <string name="take_profile_photo">Take a profile photo</string>
+    <string name="profile_photo">Profile photo</string>
+    <string name="photo_help">Tap to take a photo with your camera.</string></resources>
