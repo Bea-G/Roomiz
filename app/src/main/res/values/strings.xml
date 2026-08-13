@@ -9,4 +9,31 @@
     <string name="login_headline">Find your perfect roommate for the next chapter of your life!</string>
     <string name="or">or</string>
     <string name="sign_in">sign in</string>
-</resources>
+    <string name="back">Back</string>
+    <string name="profile_section">Questions for better match</string>
+    <string name="living_space_question">What type of living space are you looking for?</string>
+    <string name="apartment">Apartment</string>
+    <string name="house">House</string>
+    <string name="studio">Studio</string>
+    <string name="city_question">Which city would you like to live?</string>
+    <string name="price_question">What\'s your price range for monthly rent?</string>
+    <string name="rent_value">1000 ?</string>
+    <string name="stay_question">How long are you planing to stay?</string>
+    <string name="stay_one_year">1 year +</string>
+    <string name="stay_six_months">6 months +</string>
+    <string name="stay_three_months">3 month +</string>
+    <string name="stay_short">0-3 month</string>
+    <string name="amenities_question">Do you have any specific amenities you can\'t live without?</string>
+    <string name="amenity_laundry">Laundry</string>
+    <string name="amenity_dishwasher">Dishwasher</string>
+    <string name="amenity_balcony">Balcony</string>
+    <string name="amenity_pet_friendly">Pet friendly</string>
+    <string name="amenity_private_bathroom">Private bathroom</string>
+    <string name="continue_label">Continue</string>
+    <string-array name="cities">
+        <item>Select</item>
+        <item>Tel Aviv</item>
+        <item>Jerusalem</item>
+        <item>Haifa</item>
+        <item>Beer Sheva</item>
+    </string-array></resources>

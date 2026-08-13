@@ -9,4 +9,7 @@
     <color name="login_text_primary">#FF333333</color>
     <color name="login_text_secondary">#FF4B4B4B</color>
     <color name="white">#FFFFFFFF</color>
-</resources>
+    <color name="profile_option">#FFFFF3C8</color>
+    <color name="profile_option_selected">#FFFFD75E</color>
+    <color name="profile_progress_inactive">#FFE5E5E5</color>
+    <color name="profile_slider_inactive">#FFB9B9B9</color></resources>
