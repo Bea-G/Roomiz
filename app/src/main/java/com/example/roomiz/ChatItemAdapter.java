@@ -23,14 +23,14 @@ public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder>{
         // Initialize the lists
         chatItems = new ArrayList<>();
         allChatItems = new ArrayList<>();
-        allChatItems.add(new ChatItem(R.drawable.mika_dan, "Mika Dan", "Hey! How are you?"));
-        allChatItems.add(new ChatItem(R.drawable.daniel_levy, "Daniel Levy", "How is it going?"));
-        allChatItems.add(new ChatItem(R.drawable.dana_levy, "Dana Levy \uD83C\uDFE0", "I’m pretty flexible"));
-        allChatItems.add(new ChatItem(R.drawable.alon_ron, "Alon Ron", "Hey! How are you?"));
-        allChatItems.add(new ChatItem(R.drawable.gaya_refael, "Gaya Refael \uD83C\uDFE0", "Where do you live now?"));
-        allChatItems.add(new ChatItem(R.drawable.ori_keidar, "Ori Keidar", "Yes sure :)"));
-        allChatItems.add(new ChatItem(R.drawable.tom_sasson, "Tom Sasson", "You can call at 10:00"));
-        allChatItems.add(new ChatItem(R.drawable.yuval_matalon, "Yuval Matalon", "Hey! How are you?"));
+        allChatItems.add(new ChatItem(R.drawable.mika_dan, "Mika Dan", ""));
+        allChatItems.add(new ChatItem(R.drawable.daniel_levy, "Daniel Levy", ""));
+        allChatItems.add(new ChatItem(R.drawable.dana_levy, "Dana Levy \uD83C\uDFE0", ""));
+        allChatItems.add(new ChatItem(R.drawable.alon_ron, "Alon Ron", ""));
+        allChatItems.add(new ChatItem(R.drawable.gaya_refael, "Gaya Refael \uD83C\uDFE0", ""));
+        allChatItems.add(new ChatItem(R.drawable.ori_keidar, "Ori Keidar", ""));
+        allChatItems.add(new ChatItem(R.drawable.tom_sasson, "Tom Sasson", ""));
+        allChatItems.add(new ChatItem(R.drawable.yuval_matalon, "Yuval Matalon", ""));
 
         chatItems.addAll(allChatItems);  // Show all chats by default
     }
@@ -58,6 +58,21 @@ public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder>{
         return chatItems.size();
     }
 
+
+
+    public List<ChatItem> getAllChatItems() {
+        return allChatItems;
+    }
+    public void updateLastMessage(String fullName, String preview) {
+        for (ChatItem item : allChatItems) {
+            if (item.getFullName().equals(fullName)) {
+                item.setLastMessage(preview);
+                int visiblePosition = chatItems.indexOf(item);
+                if (visiblePosition >= 0) notifyItemChanged(visiblePosition);
+                return;
+            }
+        }
+    }
     // Filter the chat items based on the search query
     public void filter(String query) {
         chatItems.clear();  // Clear the list

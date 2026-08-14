@@ -40,7 +40,7 @@ public class PersonalChatActivity extends AppCompatActivity {
 
         String chatName = getIntent().getStringExtra("chat_name");
         if (chatName == null || chatName.trim().isEmpty()) chatName = "Dana Levy";
-        conversationId = "me_" + chatName.toLowerCase().replaceAll("[^a-z0-9]+", "_");
+        conversationId = ChatUtils.conversationId(chatName);
 
         ((TextView) findViewById(R.id.tvChatName)).setText(chatName);
         ((de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.ivChatAvatar)).setImageResource(imageFor(chatName));

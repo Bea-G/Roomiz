@@ -23,4 +23,7 @@ public class ChatItem {
     public String getLastMessage() {
         return LastMessage;
     }
+    public void setLastMessage(String lastMessage) {
+        LastMessage = lastMessage;
+    }
 }
