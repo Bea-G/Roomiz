@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Roomiz</string>
-    <string name="already_have_account">already have an account?</string>
     <string name="continue_with_apple">Continue with Apple</string>
     <string name="continue_with_facebook">Continue with Facebook</string>
     <string name="continue_with_google">Sign-in with Google</string>
@@ -59,4 +58,15 @@
     <string name="choose_living_space">Please choose a living space.</string>
     <string name="choose_city">Please choose a city.</string>
     <string name="choose_stay_duration">Please choose a stay duration.</string>
-    <string name="profiles_load_failed">Could not load profiles.</string></resources>
+    <string name="profiles_load_failed">Could not load profiles.</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="email_invalid">Enter a valid email address.</string>
+    <string name="password_too_short">Password must contain at least 6 characters.</string>
+    <string name="email_auth_failed">Could not sign in or create an account. Check your email and password.</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="already_have_account">Already have an account? Login</string>
+    <string name="dont_have_account">Don\'t have an account? Register</string>
+    <string name="email_register_failed">Could not register. This email may already be in use.</string>
+    <string name="email_login_failed">Could not log in. Check your email and password.</string></resources>
