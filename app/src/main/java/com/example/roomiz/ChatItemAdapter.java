@@ -11,12 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder>{
+    public interface OnChatClickListener { void onChatClick(ChatItem item); }
+    private final OnChatClickListener listener;
 
     List<ChatItem> chatItems;  // List of chat items
     List<ChatItem> allChatItems;  // List of all chat items (to be able to search for the chats)
 
-    public ChatItemAdapter(){
-        super();
+    public ChatItemAdapter(OnChatClickListener listener){
+        this.listener = listener;
 
         // Initialize the lists
         chatItems = new ArrayList<>();
@@ -48,6 +50,7 @@ public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder>{
         holder.ivChatProfile.setImageResource(chatItem.getChatProfileImage());
         holder.tvFullName.setText(chatItem.getFullName());
         holder.tvLastMessage.setText(chatItem.getLastMessage());
+        holder.itemView.setOnClickListener(view -> listener.onChatClick(chatItem));
     }
 
     @Override

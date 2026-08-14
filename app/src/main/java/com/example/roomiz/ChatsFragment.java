@@ -1,6 +1,7 @@
 package com.example.roomiz;
 
 import android.os.Bundle;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,7 +39,11 @@ public class ChatsFragment extends Fragment {
         rvChatItems.setHasFixedSize(false);
 
         rvChatItems.setLayoutManager(new GridLayoutManager(view.getContext(), 1));
-        ChatItemAdapter cia = new ChatItemAdapter();
+        ChatItemAdapter cia = new ChatItemAdapter(item -> {
+            Intent intent = new Intent(requireContext(), PersonalChatActivity.class);
+            intent.putExtra("chat_name", item.getFullName());
+            startActivity(intent);
+        });
         rvChatItems.setAdapter(cia);
 
         EditText etSearch = view.findViewById(R.id.etSearch);

@@ -24,6 +24,8 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".PersonalChatActivity"
+            android:exported="false" />        <activity
             android:name=".ProfileBuilderActivity"
             android:exported="false" />
         <activity

@@ -1,6 +1,7 @@
 package com.example.roomiz;
 
 import android.os.Bundle;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,22 +86,10 @@ public class HomeFragment extends Fragment {
     }
 
     private void openChatsFragment(String name) {
-        ChatsFragment fragment = new ChatsFragment();
-
-        // Pass the name of the profile to the chat fragment
-        Bundle bundle = new Bundle();  // Create a new bundle
-        bundle.putString("search_name", name);  // The name of the profile
-        fragment.setArguments(bundle);  // Pass the bundle to the fragment
-
-        // Replace the current fragment with the chat fragment
-        requireActivity()
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.flHome, fragment)
-                .addToBackStack(null)
-                .commit();
+        Intent intent = new Intent(requireContext(), PersonalChatActivity.class);
+        intent.putExtra("chat_name", name);
+        startActivity(intent);
     }
-
     private void animateRightAndRemove(int position, View itemView) {
         String name = profiles.get(position).getName();  // Get the name of the profile
         showMatchToast("It's a match with " + name + "!🎉");

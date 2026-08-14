@@ -45,4 +45,6 @@
     <string name="upload_photo_question">Upload a profile pic</string>
     <string name="take_profile_photo">Take a profile photo</string>
     <string name="profile_photo">Profile photo</string>
-    <string name="photo_help">Tap to take a photo with your camera.</string></resources>
+    <string name="photo_help">Tap to take a photo with your camera.</string>    <string name="today">Today</string>
+    <string name="message_hint">Type your message here</string>
+    <string name="send">Send</string></resources>
