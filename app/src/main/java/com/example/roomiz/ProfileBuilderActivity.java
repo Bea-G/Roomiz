@@ -37,6 +37,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.Map;
 
 public class ProfileBuilderActivity extends AppCompatActivity {
@@ -49,6 +51,7 @@ public class ProfileBuilderActivity extends AppCompatActivity {
     private ImageView cameraIcon;
     private MaterialButton continueButton;
     private Spinner citySpinner;
+    private ArrayAdapter<String> cityAdapter;
     private TextInputEditText nameInput;
     private Uri pendingPhotoUri;
     private String livingSpace = "";
@@ -104,10 +107,36 @@ public class ProfileBuilderActivity extends AppCompatActivity {
 
 
     private void setupCitySpinner() {
-        ArrayAdapter<CharSequence> cityAdapter = ArrayAdapter.createFromResource(this,
-                R.array.cities, R.layout.item_city_spinner);
+        cityAdapter = new ArrayAdapter<>(this, R.layout.item_city_spinner, new ArrayList<>());
         cityAdapter.setDropDownViewResource(R.layout.item_city_spinner_dropdown);
         citySpinner.setAdapter(cityAdapter);
+        citySpinner.setEnabled(false);
+        loadCitiesFromFirestore();
+    }
+
+    // Each document in the cities collection contains an israel array of city names.
+    private void loadCitiesFromFirestore() {
+        FirebaseFirestore.getInstance().collection("cities").get()
+                .addOnSuccessListener(snapshots -> {
+                    Set<String> cities = new LinkedHashSet<>();
+                    for (com.google.firebase.firestore.QueryDocumentSnapshot document : snapshots) {
+                        List<String> israelCities = (List<String>) document.get("Israel");
+                        if (israelCities != null) {
+                            cities.addAll(israelCities);
+                        }
+                    }
+                    cityAdapter.clear();
+                    cityAdapter.add(getString(R.string.select_city));
+                    cityAdapter.addAll(cities);
+                    cityAdapter.notifyDataSetChanged();
+                    citySpinner.setEnabled(true);
+                })
+                .addOnFailureListener(error -> {
+                    cityAdapter.clear();
+                    cityAdapter.add(getString(R.string.select_city));
+                    cityAdapter.notifyDataSetChanged();
+                    Toast.makeText(this, R.string.cities_load_failed, Toast.LENGTH_SHORT).show();
+                });
     }
     private void setupChoiceButtons() {
         MaterialButton apartment = findViewById(R.id.btnApartment);
