@@ -12,7 +12,20 @@
           "package_name": "com.example.roomiz"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "694380354177-616iocie85u3qjafognbssptknaipj2t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.roomiz",
+            "certificate_hash": "1e5aa5245fc54d150afbee79d0dd74b218d27947"
+          }
+        },
+        {
+          "client_id": "694380354177-l2pd15pvndi4dntjkhv0e71k00jscaco.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAzpFHqAVsByICSHup9yURHGzAzs6NNzVc"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694380354177-l2pd15pvndi4dntjkhv0e71k00jscaco.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

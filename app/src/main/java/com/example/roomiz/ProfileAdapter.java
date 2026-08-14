@@ -40,7 +40,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileViewHolder> {
 
         Profile profile = profiles.get(position);
 
-        holder.ivProfileImage.setImageResource(profile.getImageResId());
+        ProfileImageLoader.load(holder.ivProfileImage, profile.getImageName());
         holder.tvMatchPercentage.setText("⚡ " + profile.getMatchPercentage() + "%");
         holder.tvProfileName.setText(profile.getName());
         holder.tvAgeCity.setText(profile.getAge() + ", " + profile.getCity());

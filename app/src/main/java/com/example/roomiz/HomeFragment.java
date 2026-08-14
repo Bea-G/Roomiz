@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment {
             public void onChat(Profile profile) {  // When the chat button is pressed
                 // Open the chats fragment
                 logProfileEvent("chat_open", profile);
-                openChatsFragment(profile.getName());
+                openPersonalChat(profile);
             }
         });
 
@@ -85,9 +85,11 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void openChatsFragment(String name) {
+    private void openPersonalChat(Profile profile) {
         Intent intent = new Intent(requireContext(), PersonalChatActivity.class);
-        intent.putExtra("chat_name", name);
+        intent.putExtra("profile_id", profile.getId());
+        intent.putExtra("chat_name", profile.getName());
+        intent.putExtra("image_name", profile.getImageName());
         startActivity(intent);
     }
     private void animateRightAndRemove(int position, View itemView) {

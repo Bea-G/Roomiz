@@ -14,14 +14,16 @@ public class PersonalMessageAdapter extends RecyclerView.Adapter<PersonalMessage
     private static final int SENT = 1;
     private static final int RECEIVED = 2;
     private final List<ChatMessage> messages;
+    private final String currentUserId;
 
-    public PersonalMessageAdapter(List<ChatMessage> messages) {
+    public PersonalMessageAdapter(List<ChatMessage> messages, String currentUserId) {
         this.messages = messages;
+        this.currentUserId = currentUserId;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return "me".equals(messages.get(position).getSenderId()) ? SENT : RECEIVED;
+        return currentUserId.equals(messages.get(position).getSenderId()) ? SENT : RECEIVED;
     }
 
     @NonNull

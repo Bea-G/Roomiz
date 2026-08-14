@@ -1,29 +1,21 @@
 package com.example.roomiz;
 
 public class ChatItem {
+    private final String profileId;
+    private final String fullName;
+    private final String imageName;
+    private String lastMessage;
 
-    private int ChatProfileImage;
-    private String FullName;
-    private String LastMessage;
-
-    public ChatItem(int chatProfileImage, String fullName, String lastMessage) {
-        ChatProfileImage = chatProfileImage;
-        FullName = fullName;
-        LastMessage = lastMessage;
+    public ChatItem(String profileId, String fullName, String imageName) {
+        this.profileId = profileId;
+        this.fullName = fullName;
+        this.imageName = imageName;
+        this.lastMessage = "";
     }
 
-    public int getChatProfileImage() {
-        return ChatProfileImage;
-    }
-
-    public String getFullName() {
-        return FullName;
-    }
-
-    public String getLastMessage() {
-        return LastMessage;
-    }
-    public void setLastMessage(String lastMessage) {
-        LastMessage = lastMessage;
-    }
+    public String getProfileId() { return profileId; }
+    public String getFullName() { return fullName; }
+    public String getImageName() { return imageName; }
+    public String getLastMessage() { return lastMessage; }
+    public void setLastMessage(String lastMessage) { this.lastMessage = lastMessage; }
 }

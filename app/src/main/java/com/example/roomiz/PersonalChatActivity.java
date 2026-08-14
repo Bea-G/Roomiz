@@ -5,6 +5,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowInsetsControllerCompat;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,7 +31,8 @@ public class PersonalChatActivity extends AppCompatActivity {
     private RecyclerView messagesView;
     private EditText messageInput;
     private FirebaseFirestore firestore;
-    private String conversationId;
+    private String userId;
+    private String profileId;
     private ListenerRegistration messageListener;
 
     @Override
@@ -38,17 +41,21 @@ public class PersonalChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal_chat);
         new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView()).setAppearanceLightStatusBars(true);
 
-        String chatName = getIntent().getStringExtra("chat_name");
-        if (chatName == null || chatName.trim().isEmpty()) chatName = "Dana Levy";
-        conversationId = ChatUtils.conversationId(chatName);
+        userId = FirebaseAuth.getInstance().getUid();
+        profileId = getIntent().getStringExtra("profile_id");
+        if (userId == null || profileId == null) {
+            Toast.makeText(this, R.string.messages_load_failed, Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
-        ((TextView) findViewById(R.id.tvChatName)).setText(chatName);
-        ((de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.ivChatAvatar)).setImageResource(imageFor(chatName));
+        ((TextView) findViewById(R.id.tvChatName)).setText(getIntent().getStringExtra("chat_name"));
+        ProfileImageLoader.load(findViewById(R.id.ivChatAvatar), getIntent().getStringExtra("image_name"));
         ((ImageButton) findViewById(R.id.btnChatBack)).setOnClickListener(view -> finish());
 
         messagesView = findViewById(R.id.rvMessages);
         messagesView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PersonalMessageAdapter(messages);
+        adapter = new PersonalMessageAdapter(messages, userId);
         messagesView.setAdapter(adapter);
 
         messageInput = findViewById(R.id.etMessage);
@@ -67,12 +74,15 @@ public class PersonalChatActivity extends AppCompatActivity {
     }
 
     private void listenForMessages() {
-        messageListener = firestore.collection("conversations").document(conversationId)
-                .collection("messages").orderBy("timestamp")
+        messageListener = firestore.collection("users").document(userId).collection("conversations")
+                .document(profileId).collection("messages").orderBy("timestamp")
                 .addSnapshotListener((snapshots, error) -> {
-                    if (error != null || snapshots == null) return;
+                    if (error != null || snapshots == null) {
+                        Toast.makeText(this, R.string.messages_load_failed, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     messages.clear();
-                    for (DocumentSnapshot document : snapshots.getDocuments()) {
+                    for (DocumentSnapshot document : snapshots) {
                         String text = document.getString("text");
                         String senderId = document.getString("senderId");
                         Timestamp timestamp = document.getTimestamp("timestamp");
@@ -88,22 +98,12 @@ public class PersonalChatActivity extends AppCompatActivity {
         if (text.isEmpty()) return;
         Map<String, Object> message = new HashMap<>();
         message.put("text", text);
-        message.put("senderId", "me");
+        message.put("senderId", userId);
         message.put("timestamp", FieldValue.serverTimestamp());
-        firestore.collection("conversations").document(conversationId).collection("messages").add(message);
+        firestore.collection("users").document(userId).collection("conversations")
+                .document(profileId).collection("messages").add(message)
+                .addOnFailureListener(error -> Toast.makeText(this, R.string.message_send_failed, Toast.LENGTH_SHORT).show());
         messageInput.setText("");
-    }
-
-    private int imageFor(String name) {
-        String lowerName = name.toLowerCase();
-        if (lowerName.contains("mika")) return R.drawable.mika_dan;
-        if (lowerName.contains("daniel")) return R.drawable.daniel_levy;
-        if (lowerName.contains("gaya")) return R.drawable.gaya_refael;
-        if (lowerName.contains("alon")) return R.drawable.alon_ron;
-        if (lowerName.contains("ori")) return R.drawable.ori_keidar;
-        if (lowerName.contains("tom")) return R.drawable.tom_sasson;
-        if (lowerName.contains("yuval")) return R.drawable.yuval_matalon;
-        return R.drawable.dana_levy;
     }
 
     @Override

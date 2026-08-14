@@ -3,7 +3,8 @@ package com.example.roomiz;
 public class Profile {
     // Profile class to represent a profile object with all its properties
 
-    private final int imageResId;  // id of the profile image
+    private final String id;
+    private final String imageName;
     private final String name;  // name of the profile
     private final int age;  // age of the profile
     private final String city;  // city of the profile
@@ -12,11 +13,11 @@ public class Profile {
     private final String tagOne;  // tag one of the profile
     private final String tagTwo;  // tag two of the profile
 
-
     // Constructor
-    public Profile(int imageResId, String name, int age, String city,
+    public Profile(String id, String imageName, String name, int age, String city,
                    int matchPercentage, String about, String tagOne, String tagTwo) {
-        this.imageResId = imageResId;
+        this.id = id;
+        this.imageName = imageName;
         this.name = name;
         this.age = age;
         this.city = city;
@@ -27,12 +28,16 @@ public class Profile {
     }
 
     // Getters for the profile properties
-    public int getImageResId() {
-        return imageResId;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getImageName() {
+        return imageName;
     }
 
     public int getAge() {

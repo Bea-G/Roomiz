@@ -13,7 +13,6 @@
         android:background="@drawable/round_profile_imageview"
         android:clipToOutline="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/dana_levy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,8 +31,7 @@
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/ivProfileImage"
-        app:layout_constraintEnd_toEndOf="@id/ivProfileImage"
-        tools:text="&#9889; 93%" />
+        app:layout_constraintEnd_toEndOf="@id/ivProfileImage" />
 
     <TextView
         android:id="@+id/tvProfileName"
@@ -86,8 +84,7 @@
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAboutTitle"
-        tools:text="I’m a student of communications, and in my free time, I enjoy cooking, traveling, and hanging out with friends." />
+        app:layout_constraintTop_toBottomOf="@+id/tvAboutTitle" />
 
     <TextView
         android:id="@+id/tvInCommonTitle"
@@ -123,7 +120,7 @@
             android:textColor="#616161"
             android:textSize="15sp"
             android:textStyle="bold"
-            tools:text="&#127925; Pop, Hip-hop" />
+            />
 
         <TextView
             android:id="@+id/tvTagTwo"
@@ -135,7 +132,7 @@
             android:textColor="#616161"
             android:textSize="15sp"
             android:textStyle="bold"
-            tools:text="&#127968; Apartment" />
+            />
     </LinearLayout>
 
     <LinearLayout
