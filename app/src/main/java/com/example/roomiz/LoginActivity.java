@@ -30,8 +30,9 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText passwordInput;
     private MaterialButton emailContinueButton;
     private TextView authModeText;
-    private boolean loginMode = false;
+    private boolean loginMode = false;  // Start with registration.
 
+    // Receives the Google account.
     private final ActivityResultLauncher<Intent> googleSignInLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), result -> {
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         googleClient = GoogleSignIn.getClient(this, options);
 
+        // Login screen actions.
         emailContinueButton.setOnClickListener(view -> continueWithEmail());
         authModeText.setOnClickListener(view -> switchAuthMode());
         findViewById(R.id.btnGoogleSignIn).setOnClickListener(view -> startGoogleSignIn());
@@ -87,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void registerWithEmail(String email, String password) {
+        // Wait for registration.
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(registerTask -> {
             if (registerTask.isSuccessful()) {
                 openProfileBuilder();
@@ -97,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginWithEmail(String email, String password) {
+        // Wait for login.
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(loginTask -> {
             if (loginTask.isSuccessful()) {
                 openProfileBuilder();
@@ -123,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void signInToFirebase(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+        // Wait for Google login.
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 openProfileBuilder();

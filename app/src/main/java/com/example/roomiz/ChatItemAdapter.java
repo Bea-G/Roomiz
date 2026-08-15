@@ -16,7 +16,7 @@ public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder> {
     }
 
     private final List<ChatItem> chatItems = new ArrayList<>();
-    private final List<ChatItem> allChatItems = new ArrayList<>();
+    private final List<ChatItem> allChatItems = new ArrayList<>();  // Full list used by search.
     private final OnChatClickListener listener;
 
     public ChatItemAdapter(OnChatClickListener listener) {
@@ -44,6 +44,7 @@ public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder> {
         ProfileImageLoader.load(holder.ivChatProfile, item.getImageName());
         holder.tvFullName.setText(item.getFullName());
         holder.tvLastMessage.setText(item.getLastMessage());
+        // Open the selected chat.
         holder.itemView.setOnClickListener(view -> listener.onChatClick(item));
     }
 

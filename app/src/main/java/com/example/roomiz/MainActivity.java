@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         // Menu buttons handling
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             int itemId = item.getItemId();
+            // Switch tabs.
             if (itemId == R.id.miHome) {
                 setCurrentFragment(homeFragment);
             } else if (itemId == R.id.miChat) {

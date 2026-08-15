@@ -102,7 +102,7 @@ public class HomeFragment extends Fragment {
                 .alpha(0f)
                 .setDuration(300)
                 .withEndAction(() -> {
-                    pa.removeCard(position);
+                    pa.removeCard(position);  // Remove the card after the swipe.
 
                     // Check if there are no more cards left and if so, show the end card
                     checkIfFinished();
@@ -119,7 +119,7 @@ public class HomeFragment extends Fragment {
                 .alpha(0f)
                 .setDuration(300)
                 .withEndAction(() -> {
-                    pa.removeCard(position);
+                    pa.removeCard(position);  // Remove the card after the swipe.
 
                     // Check if there are no more cards left and if so, show the end card
                     checkIfFinished();

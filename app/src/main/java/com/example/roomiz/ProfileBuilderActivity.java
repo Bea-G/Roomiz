@@ -60,6 +60,7 @@ public class ProfileBuilderActivity extends AppCompatActivity {
     private final int[] progressIds = {R.id.progress1, R.id.progress2, R.id.progress3,
             R.id.progress4, R.id.progress5, R.id.progress6};
 
+    // Handles camera permission.
     private final ActivityResultLauncher<String> cameraPermissionLauncher = registerForActivityResult(
             new ActivityResultContracts.RequestPermission(), granted -> {
                 if (granted) {
@@ -69,6 +70,7 @@ public class ProfileBuilderActivity extends AppCompatActivity {
                 }
             });
 
+    // Handles the camera result.
     private final ActivityResultLauncher<Uri> cameraLauncher = registerForActivityResult(
             new ActivityResultContracts.TakePicture(), saved -> {
                 if (saved && pendingPhotoUri != null) {
@@ -116,6 +118,7 @@ public class ProfileBuilderActivity extends AppCompatActivity {
 
     // Each document in the cities collection contains an israel array of city names.
     private void loadCitiesFromFirestore() {
+        // Load city list from Firebase.
         FirebaseFirestore.getInstance().collection("cities").get()
                 .addOnSuccessListener(snapshots -> {
                     Set<String> cities = new LinkedHashSet<>();
@@ -142,6 +145,7 @@ public class ProfileBuilderActivity extends AppCompatActivity {
         MaterialButton apartment = findViewById(R.id.btnApartment);
         MaterialButton house = findViewById(R.id.btnHouse);
         MaterialButton studio = findViewById(R.id.btnStudio);
+
         apartment.setOnClickListener(view -> selectSingleChoice(apartment, house, studio));
         house.setOnClickListener(view -> selectSingleChoice(house, apartment, studio));
         studio.setOnClickListener(view -> selectSingleChoice(studio, apartment, house));
@@ -150,6 +154,7 @@ public class ProfileBuilderActivity extends AppCompatActivity {
         MaterialButton sixMonths = findViewById(R.id.btnStaySixMonths);
         MaterialButton threeMonths = findViewById(R.id.btnStayThreeMonths);
         MaterialButton shortStay = findViewById(R.id.btnStayShort);
+
         oneYear.setOnClickListener(view -> selectSingleChoice(oneYear, sixMonths, threeMonths, shortStay));
         sixMonths.setOnClickListener(view -> selectSingleChoice(sixMonths, oneYear, threeMonths, shortStay));
         threeMonths.setOnClickListener(view -> selectSingleChoice(threeMonths, oneYear, sixMonths, shortStay));

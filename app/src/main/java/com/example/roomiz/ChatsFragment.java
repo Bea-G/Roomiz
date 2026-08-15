@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatsFragment extends Fragment {
+    // One listener for each chat preview.
     private final List<ListenerRegistration> previewListeners = new ArrayList<>();
 
     @Override
@@ -41,6 +42,7 @@ public class ChatsFragment extends Fragment {
         loadProfiles(adapter);
 
         EditText searchInput = view.findViewById(R.id.etSearch);
+        // Filter chats live while end-user types.
         searchInput.addTextChangedListener(new android.text.TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) { adapter.filter(s.toString()); }
@@ -73,7 +75,7 @@ public class ChatsFragment extends Fragment {
             ListenerRegistration listener = firestore.collection("users").document(userId)
                     .collection("conversations").document(item.getProfileId()).collection("messages")
                     .orderBy("timestamp", Query.Direction.DESCENDING).limit(1)
-                    .addSnapshotListener((snapshots, error) -> {
+                    .addSnapshotListener((snapshots, error) -> {  // Watch the latest message
                         if (error != null || snapshots == null || snapshots.isEmpty()) return;
                         DocumentSnapshot message = snapshots.getDocuments().get(0);
                         String text = message.getString("text");

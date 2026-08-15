@@ -51,6 +51,8 @@ public class PersonalChatActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.tvChatName)).setText(getIntent().getStringExtra("chat_name"));
         ProfileImageLoader.load(findViewById(R.id.ivChatAvatar), getIntent().getStringExtra("image_name"));
+
+        // Return to the chat list by finishing the Activity lifecycle.
         ((ImageButton) findViewById(R.id.btnChatBack)).setOnClickListener(view -> finish());
 
         messagesView = findViewById(R.id.rvMessages);
@@ -60,7 +62,7 @@ public class PersonalChatActivity extends AppCompatActivity {
 
         messageInput = findViewById(R.id.etMessage);
         MaterialButton sendButton = findViewById(R.id.btnSend);
-        sendButton.setOnClickListener(view -> sendMessage());
+        sendButton.setOnClickListener(view -> sendMessage());  // When message sent
         messageInput.setOnEditorActionListener((view, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEND) {
                 sendMessage();
@@ -73,10 +75,11 @@ public class PersonalChatActivity extends AppCompatActivity {
         listenForMessages();
     }
 
+    // Keep messages updated live.
     private void listenForMessages() {
         messageListener = firestore.collection("users").document(userId).collection("conversations")
                 .document(profileId).collection("messages").orderBy("timestamp")
-                .addSnapshotListener((snapshots, error) -> {
+                .addSnapshotListener((snapshots, error) -> {  // Watch current conversation.
                     if (error != null || snapshots == null) {
                         Toast.makeText(this, R.string.messages_load_failed, Toast.LENGTH_SHORT).show();
                         return;

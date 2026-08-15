@@ -12,9 +12,10 @@ public class ProfileRepository {
         void onError(Exception exception);
     }
 
+    // Read the profiles.
     public static void getProfilesFromFirestore(ProfilesCallback callback) {
         FirebaseFirestore.getInstance().collection("profiles").get()
-                .addOnSuccessListener(snapshots -> {
+                .addOnSuccessListener(snapshots -> {  // Return the loaded profiles.
                     List<Profile> profiles = new ArrayList<>();
                     for (QueryDocumentSnapshot document : snapshots) {
                         String name = document.getString("name");
