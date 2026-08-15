@@ -42,22 +42,22 @@ import java.util.Set;
 import java.util.Map;
 
 public class ProfileBuilderActivity extends AppCompatActivity {
-    private static final int STEP_COUNT = 6;
+    private static final int STEP_COUNT = 6;  // Number of profile steps.
 
-    private int currentStep = 0;
-    private ViewFlipper profileSteps;
-    private View introScreen;
-    private ImageView profilePhoto;
-    private ImageView cameraIcon;
-    private MaterialButton continueButton;
-    private Spinner citySpinner;
-    private ArrayAdapter<String> cityAdapter;
-    private TextInputEditText nameInput;
-    private Uri pendingPhotoUri;
-    private String livingSpace = "";
-    private String stayDuration = "";
-    private final List<String> amenities = new ArrayList<>();
-    private final int[] progressIds = {R.id.progress1, R.id.progress2, R.id.progress3,
+    private int currentStep = 0;  // Current profile step.
+    private ViewFlipper profileSteps;  // Holds the step screens.
+    private View introScreen;  // Intro before the questions.
+    private ImageView profilePhoto;  // Photo preview.
+    private ImageView cameraIcon;  // Camera placeholder icon.
+    private MaterialButton continueButton;  // Moves to the next step.
+    private Spinner citySpinner;  // City selector.
+    private ArrayAdapter<String> cityAdapter;  // City list adapter.
+    private TextInputEditText nameInput;  // Name field.
+    private Uri pendingPhotoUri;  // Captured photo path.
+    private String livingSpace = "";  // Chosen living space.
+    private String stayDuration = "";  // Chosen stay duration.
+    private final List<String> amenities = new ArrayList<>();  // Selected amenities.
+    private final int[] progressIds = {R.id.progress1, R.id.progress2, R.id.progress3,  // Step indicator ids.
             R.id.progress4, R.id.progress5, R.id.progress6};
 
     // Handles camera permission.
@@ -339,6 +339,7 @@ public class ProfileBuilderActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         if (introScreen.getVisibility() == View.VISIBLE) {
             finish();
         } else {

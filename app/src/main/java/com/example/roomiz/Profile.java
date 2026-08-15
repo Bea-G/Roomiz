@@ -3,8 +3,8 @@ package com.example.roomiz;
 public class Profile {
     // Profile class to represent a profile object with all its properties
 
-    private final String id;
-    private final String imageName;
+    private final String id;  // Firestore document id.
+    private final String imageName;  // Local image name.
     private final String name;  // name of the profile
     private final int age;  // age of the profile
     private final String city;  // city of the profile

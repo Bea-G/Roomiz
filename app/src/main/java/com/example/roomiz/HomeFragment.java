@@ -23,7 +23,7 @@ public class HomeFragment extends Fragment {
     private ProfileAdapter pa;  // Adapter for the profile cards
     private List<Profile> profiles;  // List of profiles
     View endCard;  // View for the end card
-    private FirebaseAnalytics firebaseAnalytics;
+    private FirebaseAnalytics firebaseAnalytics;  // Analytics logger.
 
     public HomeFragment() {
         // Required empty public constructor

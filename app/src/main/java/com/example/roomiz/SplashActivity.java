@@ -2,16 +2,15 @@ package com.example.roomiz;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 public class SplashActivity extends AppCompatActivity {
-    private static final long SPLASH_DURATION_MS = 1_000L;
+    private static final long SPLASH_DURATION_MS = 1_000L;  // Splash delay.
 
     private final Runnable openLogin = () -> {
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));  // Opens login after splash.
         finish();
     };
 

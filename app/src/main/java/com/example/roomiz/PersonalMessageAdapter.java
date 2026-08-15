@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class PersonalMessageAdapter extends RecyclerView.Adapter<PersonalMessageAdapter.MessageViewHolder> {
-    private static final int SENT = 1;
-    private static final int RECEIVED = 2;
-    private final List<ChatMessage> messages;
-    private final String currentUserId;
+    private static final int SENT = 1;  // Sent message type.
+    private static final int RECEIVED = 2;  // Received message type.
+    private final List<ChatMessage> messages;  // Chat messages.
+    private final String currentUserId;  // Signed-in user id.
 
     public PersonalMessageAdapter(List<ChatMessage> messages, String currentUserId) {
         this.messages = messages;

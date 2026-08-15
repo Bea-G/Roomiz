@@ -15,9 +15,9 @@ public class ChatItemAdapter extends RecyclerView.Adapter<ChatItemViewHolder> {
         void onChatClick(ChatItem item);
     }
 
-    private final List<ChatItem> chatItems = new ArrayList<>();
+    private final List<ChatItem> chatItems = new ArrayList<>();  // Items currently shown.
     private final List<ChatItem> allChatItems = new ArrayList<>();  // Full list used by search.
-    private final OnChatClickListener listener;
+    private final OnChatClickListener listener;  // Handles chat taps.
 
     public ChatItemAdapter(OnChatClickListener listener) {
         this.listener = listener;

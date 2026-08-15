@@ -24,16 +24,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth firebaseAuth;
-    private GoogleSignInClient googleClient;
-    private TextInputEditText emailInput;
-    private TextInputEditText passwordInput;
-    private MaterialButton emailContinueButton;
-    private TextView authModeText;
+    private FirebaseAuth firebaseAuth;  // Firebase login service.
+    private GoogleSignInClient googleClient;  // Google sign-in client.
+    private TextInputEditText emailInput;  // Email field.
+    private TextInputEditText passwordInput;  // Password field.
+    private MaterialButton emailContinueButton;  // Register or login button.
+    private TextView authModeText;  // Switches auth mode - register/login.
     private boolean loginMode = false;  // Start with registration.
 
     // Receives the Google account.
-    private final ActivityResultLauncher<Intent> googleSignInLauncher = registerForActivityResult(
+    private final ActivityResultLauncher<Intent> googleSignInLauncher = registerForActivityResult(  // Google sign-in result.
             new ActivityResultContracts.StartActivityForResult(), result -> {
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
                 try {

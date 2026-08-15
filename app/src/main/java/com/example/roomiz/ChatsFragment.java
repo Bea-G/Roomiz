@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatsFragment extends Fragment {
-    // One listener for each chat preview.
+    // Active preview listeners, one listener for each chat preview.
     private final List<ListenerRegistration> previewListeners = new ArrayList<>();
 
     @Override

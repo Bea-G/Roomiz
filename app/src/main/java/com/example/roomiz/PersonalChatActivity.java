@@ -26,14 +26,14 @@ import java.util.List;
 import java.util.Map;
 
 public class PersonalChatActivity extends AppCompatActivity {
-    private final List<ChatMessage> messages = new ArrayList<>();
-    private PersonalMessageAdapter adapter;
-    private RecyclerView messagesView;
-    private EditText messageInput;
-    private FirebaseFirestore firestore;
-    private String userId;
-    private String profileId;
-    private ListenerRegistration messageListener;
+    private final List<ChatMessage> messages = new ArrayList<>();  // Messages in this chat.
+    private PersonalMessageAdapter adapter;  // Message list adapter.
+    private RecyclerView messagesView;  // Message list view.
+    private EditText messageInput;  // Message field.
+    private FirebaseFirestore firestore;  // Chat database.
+    private String userId;  // Current user id.
+    private String profileId;  // Other profile id.
+    private ListenerRegistration messageListener;  // Live message listener.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class PersonalChatActivity extends AppCompatActivity {
         ProfileImageLoader.load(findViewById(R.id.ivChatAvatar), getIntent().getStringExtra("image_name"));
 
         // Return to the chat list by finishing the Activity lifecycle.
-        ((ImageButton) findViewById(R.id.btnChatBack)).setOnClickListener(view -> finish());
+        findViewById(R.id.btnChatBack).setOnClickListener(view -> finish());
 
         messagesView = findViewById(R.id.rvMessages);
         messagesView.setLayoutManager(new LinearLayoutManager(this));
